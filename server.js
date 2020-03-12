@@ -6,7 +6,7 @@ var path = require("path");
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = 3000;
+var PORT = 99111;
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -14,8 +14,8 @@ app.use(express.json());
 
 // Star Wars Characters (DATA)
 // =============================================================
-var reservation = [];
-let waitingList = [];
+var tables = [];
+let waitLists = [];
 
 // Routes
 // =============================================================
@@ -25,23 +25,22 @@ app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "home.html"));
 });
 
-app.get("/viewTables", function(req, res) {
+app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "viewTables.html"));
 });
 
-app.get("/makeReservation", function(req, res) {
+app.get("/reserve", function(req, res) {
   res.sendFile(path.join(__dirname, "makeReservation.html"));
 });
 
-// Displays all characters
-// This function returns an object, so we need to put "/api/xxxx"
-app.get("/api/reservation", function(req, res) {
-  return res.json(characters);
+// Return your tables Array object
+app.get("/api/tables", function(req, res) {
+  return res.json(reservations);
 });
 
-
-app.get("/api/waitList", function(req, res) {
-  return res.json(characters);
+// Return your waitLists Array object 
+app.get("/api/waitlist", function(req, res) {
+  return res.json(waitLists);
 });
 
 // Displays a single character, or returns false
