@@ -13,5 +13,5 @@ README-orig.md
 # Ignore files related to API keys
 #.env
 
-# Ignore SASS config files
-#.sass-cache
+# Ignore package-lock.json
+package-lock.json
